@@ -25,7 +25,7 @@ public class Player implements ActionListener {
         panel.add(btnPa, BorderLayout.EAST);
     }
 
-    // ボタン生成メソッド
+    // じゃんけんボタン生成メソッド
     public static JButton setButton(JButton button) {
         int buttonSize = (640 - 20) / 3;
         Dimension buttonDimesion = new Dimension(buttonSize, 50);
@@ -39,15 +39,20 @@ public class Player implements ActionListener {
         return (button);
     }
 
+    // ボタン押下検知メソッド
     public void actionPerformed(ActionEvent e) {
         String command = e.getActionCommand();
+        // System.out.println(command);
+
         int playerHand = 0;
-        if (command.equals("グー"))
+        if (command.equals("グー")) {
             playerHand = 1;
-        else if (command.equals("チョキ"))
+        } else if (command.equals("チョキ")) {
             playerHand = 2;
-        else if (command.equals("パー"))
+        } else if (command.equals("パー")) {
             playerHand = 3;
+        }
+        // System.out.println("playerHand: " + playerHand);
 
         int computerHand = Computer.decideComputerHand();
         VictoryOrDefeat.decideVictoryOrDefeat(computerHand, playerHand);
