@@ -61,21 +61,21 @@ public class Panel {
         // プレイヤーの選択結果を表示
         Dimension playerHandDimension = new Dimension(640 / 3, 50);
         JPanel playerHandPanel = setPanel(Color.WHITE, playerHandDimension);
-        JLabel playerHandLabel = new JLabel("あなたの手\n" + computerHand);
-        playerHandLabel = setFont(Color.BLACK, playerHandLabel, 30);
+        JLabel playerHandLabel = new JLabel("<html>あなたの手<br>" + playerHand + "</html>");
+        playerHandLabel = setFont(Color.BLACK, playerHandLabel, 25);
         playerHandPanel.add(playerHandLabel);
-        // GameMain.frame.add(playerHandPanel, BorderLayout.WEST);
+        GameMain.frame.add(playerHandPanel, BorderLayout.WEST);
 
         // 勝敗と連勝数を表示
-        Panel.contentsLabel = setFont(Color.BLACK, contentsLabel, 30);
+        Panel.contentsLabel = setFont(Color.BLACK, contentsLabel, 25);
         Panel.contentsLabel.setText("<html>" + winOrLose + "<br>" + "連勝数：" + Player.point + "</html>");
 
         // コンピュータの選択結果を表示
         Dimension cpuHandDimension = new Dimension(640 / 3, 50);
         JPanel cpuHandPanel = setPanel(Color.WHITE, cpuHandDimension);
-        JLabel cpuHandLabel = new JLabel("あいての手\n" + computerHand);
-        cpuHandLabel = setFont(Color.BLACK, cpuHandLabel, 30);
+        JLabel cpuHandLabel = new JLabel("<html>あいての手<br>" + computerHand + "</html>");
+        cpuHandLabel = setFont(Color.BLACK, cpuHandLabel, 25);
         cpuHandPanel.add(cpuHandLabel);
-        // GameMain.frame.add(cpuHandPanel, BorderLayout.EAST);
+        GameMain.frame.add(cpuHandPanel, BorderLayout.EAST);
     }
 }
