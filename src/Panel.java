@@ -3,18 +3,21 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.border.Border;
 
 public class Panel {
+    public static JPanel headerPanel;
     public static JLabel headerLabel;
     public static JLabel contentsLabel;
 
     public static void createPanel() {
         // パネル表示
         Dimension headerPanelDimension = new Dimension(640, 50);
-        JPanel headerPanel = setPanel(Color.BLACK, headerPanelDimension);
+        headerPanel = setPanel(Color.BLACK, headerPanelDimension);
         headerLabel = new JLabel("「さあ、じゃんけんで勝負だ！」");
         headerLabel = setFont(Color.WHITE, headerLabel, 24);
         headerPanel.add(headerLabel);
@@ -77,5 +80,24 @@ public class Panel {
         cpuHandLabel = setFont(Color.BLACK, cpuHandLabel, 25);
         cpuHandPanel.add(cpuHandLabel);
         GameMain.frame.add(cpuHandPanel, BorderLayout.EAST);
+    }
+
+    // リセットボタン生成メソッド
+    public static void setResetButton() {
+        JButton btnReset = new JButton("リセット");
+        btnReset = Player.setButton(btnReset);
+        Panel.headerPanel.add(btnReset, BorderLayout.WEST);
+    }
+
+    // N本先取リスト生成メソッド
+    public static void setListOfPreemption() {
+
+    }
+
+    // 終了ボタン生成メソッド
+    public static void setQuitButton() {
+        JButton btnQuit = new JButton("閉じる");
+        btnQuit = Player.setButton(btnQuit);
+        Panel.headerPanel.add(btnQuit, BorderLayout.EAST);
     }
 }
