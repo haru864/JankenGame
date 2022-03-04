@@ -14,5 +14,9 @@ public class GameMain {
 
         // ウィンドウ表示
         frame.setVisible(true);
+
+        // デフォルトの勝利条件を設定（５本先取）
+        Player.requiredNumOfWin = 5;
+        Panel.popupMessage(Player.requiredNumOfWin + "本先取であなたの勝ちです。\nこの設定は後から変更できます。");
     }
 }

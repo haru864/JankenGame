@@ -4,8 +4,10 @@ import java.awt.Dimension;
 import java.awt.Font;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 
@@ -19,8 +21,9 @@ public class Panel {
         Dimension headerPanelDimension = new Dimension(640, 50);
         headerPanel = setPanel(Color.BLACK, headerPanelDimension);
         headerLabel = new JLabel("「さあ、じゃんけんで勝負だ！」");
+        headerLabel.setPreferredSize(new Dimension(640, 50));
         headerLabel = setFont(Color.WHITE, headerLabel, 24);
-        headerPanel.add(headerLabel);
+        headerPanel.add(headerLabel, BorderLayout.CENTER);
         GameMain.frame.add(headerPanel, BorderLayout.NORTH);
 
         // コンテンツパネル
@@ -82,22 +85,33 @@ public class Panel {
         GameMain.frame.add(cpuHandPanel, BorderLayout.EAST);
     }
 
+    // メニューバー生成メソッド
+    public static void setMenu() {
+        headerPanel.removeAll();
+        headerLabel = new JLabel(Player.times + "回目の勝負です。");
+        headerLabel = setFont(Color.WHITE, headerLabel, 24);
+        headerLabel.setPreferredSize(new Dimension(450, 50));
+        headerPanel.add(headerLabel, BorderLayout.WEST);
+        setResetButton();
+        setListOfPreemption();
+    }
+
     // リセットボタン生成メソッド
     public static void setResetButton() {
         JButton btnReset = new JButton("リセット");
-        btnReset = Player.setButton(btnReset);
-        Panel.headerPanel.add(btnReset, BorderLayout.WEST);
+        btnReset = Player.setButton(btnReset, 100, 15);
+        headerPanel.add(btnReset, BorderLayout.EAST);
     }
 
     // N本先取リスト生成メソッド
     public static void setListOfPreemption() {
-
+        JComboBox<Integer> combo = new JComboBox<>(new Integer[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 });
+        headerPanel.add(combo, BorderLayout.CENTER);
     }
 
-    // 終了ボタン生成メソッド
-    public static void setQuitButton() {
-        JButton btnQuit = new JButton("閉じる");
-        btnQuit = Player.setButton(btnQuit);
-        Panel.headerPanel.add(btnQuit, BorderLayout.EAST);
+    // ポップアップ生成メソッド
+    public static void popupMessage(String message) {
+        JFrame popupFrame = new JFrame();
+        JOptionPane.showMessageDialog(popupFrame, message);
     }
 }

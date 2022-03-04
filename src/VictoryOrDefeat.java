@@ -4,9 +4,12 @@ import java.util.Arrays;
 public class VictoryOrDefeat {
     public static void decideVictoryOrDefeat(int computerHand, int playerHand) {
         // System.out.printf("%d, %d\n", computerHand, playerHand);
-        ArrayList<String> list = new ArrayList<>(Arrays.asList("dummy", "グー", "チョキ", "パー"));
+        ArrayList<String> list = new ArrayList<>(Arrays.asList("未選択", "グー", "チョキ", "パー"));
 
-        if (playerHand == computerHand) {
+        if (playerHand == 0) {
+            Player.point = 0;
+            reflectSituation("得点をリセットしました。", "-", "-");
+        } else if (playerHand == computerHand) {
             reflectSituation("引き分け！", list.get(playerHand), list.get(computerHand));
         } else if ((playerHand == 3 && computerHand == 1) || (playerHand + 1 == computerHand)) {
             Player.point++;
@@ -26,8 +29,6 @@ public class VictoryOrDefeat {
 
     // ヘッダにリセットボタン、終了ボタン、N本先取リストを表示する
     public static void setHeaderButton() {
-        Panel.setResetButton();
-        // Panel.setListOfPreemption();
-        Panel.setQuitButton();
+        Panel.setMenu();
     }
 }
