@@ -2,7 +2,9 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Image;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -59,15 +61,22 @@ public class Panel {
     }
 
     // 勝敗表示パネル生成メソッド
-    public static void setSituation(String winOrLose, String playerHand, String computerHand) {
+    public static void setSituation(String winOrLose, String playerHand, String computerHand, ImageIcon playerHandIcon,
+            ImageIcon computerHandIcon) {
         // System.out.printf("%s, %s, %s\n", winOrLose, playerHand, computerHand);
 
         // プレイヤーの選択結果を表示
         Dimension playerHandDimension = new Dimension(640 / 3, 50);
         JPanel playerHandPanel = setPanel(Color.WHITE, playerHandDimension);
         JLabel playerHandLabel = new JLabel("<html>あなたの手<br>" + playerHand + "</html>");
+        JLabel playerHandIconLabel = new JLabel(playerHandIcon);
         playerHandLabel = setFont(Color.BLACK, playerHandLabel, 25);
-        playerHandPanel.add(playerHandLabel);
+        if (winOrLose.equals("得点をリセットしました。")) {
+            playerHandPanel.add(playerHandLabel);
+        } else {
+            playerHandPanel.add(playerHandLabel, BorderLayout.NORTH);
+            playerHandPanel.add(playerHandIconLabel, BorderLayout.SOUTH);
+        }
         GameMain.frame.add(playerHandPanel, BorderLayout.WEST);
 
         // 勝敗と連勝数を表示
@@ -79,8 +88,14 @@ public class Panel {
         Dimension cpuHandDimension = new Dimension(640 / 3, 50);
         JPanel cpuHandPanel = setPanel(Color.WHITE, cpuHandDimension);
         JLabel cpuHandLabel = new JLabel("<html>あいての手<br>" + computerHand + "</html>");
+        JLabel cpuHandIconLabel = new JLabel(computerHandIcon);
         cpuHandLabel = setFont(Color.BLACK, cpuHandLabel, 25);
-        cpuHandPanel.add(cpuHandLabel);
+        if (winOrLose.equals("得点をリセットしました。")) {
+            cpuHandPanel.add(cpuHandLabel);
+        } else {
+            cpuHandPanel.add(cpuHandLabel, BorderLayout.NORTH);
+            cpuHandPanel.add(cpuHandIconLabel, BorderLayout.SOUTH);
+        }
         GameMain.frame.add(cpuHandPanel, BorderLayout.EAST);
     }
 
