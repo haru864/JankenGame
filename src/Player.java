@@ -9,7 +9,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class Player implements ActionListener {
-    public static int point;
+    public static int playerPoint;
+    public static int computerPoint;
     public static int requiredNumOfWin;
     public static int times;
 
@@ -65,5 +66,12 @@ public class Player implements ActionListener {
 
         int computerHand = Computer.decideComputerHand();
         VictoryOrDefeat.decideVictoryOrDefeat(computerHand, playerHand);
+    }
+
+    // リセット
+    public static void resetPoint() {
+        Player.playerPoint = 0;
+        Player.computerPoint = 0;
+        Player.times = 0;
     }
 }

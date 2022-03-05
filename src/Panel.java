@@ -4,12 +4,10 @@ import java.awt.Dimension;
 import java.awt.Font;
 
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.border.Border;
 
 public class Panel {
     public static JPanel headerPanel;
@@ -73,8 +71,9 @@ public class Panel {
         GameMain.frame.add(playerHandPanel, BorderLayout.WEST);
 
         // 勝敗と連勝数を表示
-        Panel.contentsLabel = setFont(Color.BLACK, contentsLabel, 25);
-        Panel.contentsLabel.setText("<html>" + winOrLose + "<br>" + "連勝数：" + Player.point + "</html>");
+        contentsLabel = setFont(Color.BLACK, contentsLabel, 25);
+        contentsLabel.setText("<html>" + winOrLose + "<br>" + "あなたの得点：" + Player.playerPoint + "<br>" + "あいての得点："
+                + Player.computerPoint + "</html>");
 
         // コンピュータの選択結果を表示
         Dimension cpuHandDimension = new Dimension(640 / 3, 50);
@@ -105,8 +104,10 @@ public class Panel {
 
     // N本先取リスト生成メソッド
     public static void setListOfPreemption() {
-        JComboBox<Integer> combo = new JComboBox<>(new Integer[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 });
-        headerPanel.add(combo, BorderLayout.CENTER);
+        var data = new Integer[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+        var dropList = new JComboBoxOriginal(data);
+        dropList.comboBox.setSelectedItem(Player.requiredNumOfWin);
+        headerPanel.add(dropList.comboBox, BorderLayout.CENTER);
     }
 
     // ポップアップ生成メソッド
