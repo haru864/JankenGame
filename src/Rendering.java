@@ -3,7 +3,7 @@ import javax.swing.ImageIcon;
 
 public class Rendering {
     public static ImageIcon renderingImageIcon(ImageIcon imgIcon) {
-        double magnification = 0.5;
+        double magnification = 0.7;
         int iconWidth = (int) (imgIcon.getIconWidth() * magnification);
         int iconHeight = (int) (imgIcon.getIconHeight() * magnification);
 

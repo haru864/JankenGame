@@ -68,7 +68,7 @@ public class Panel {
         // プレイヤーの選択結果を表示
         Dimension playerHandDimension = new Dimension(640 / 3, 50);
         JPanel playerHandPanel = setPanel(Color.WHITE, playerHandDimension);
-        JLabel playerHandLabel = new JLabel("<html>あなたの手<br>" + playerHand + "</html>");
+        JLabel playerHandLabel = new JLabel("<html><br><br><br>あなたの手<br>" + playerHand + "</html>");
         JLabel playerHandIconLabel = new JLabel(playerHandIcon);
         playerHandLabel = setFont(Color.BLACK, playerHandLabel, 25);
         if (winOrLose.equals("得点をリセットしました。")) {
@@ -87,7 +87,7 @@ public class Panel {
         // コンピュータの選択結果を表示
         Dimension cpuHandDimension = new Dimension(640 / 3, 50);
         JPanel cpuHandPanel = setPanel(Color.WHITE, cpuHandDimension);
-        JLabel cpuHandLabel = new JLabel("<html>あいての手<br>" + computerHand + "</html>");
+        JLabel cpuHandLabel = new JLabel("<html><br><br><br>あいての手<br>" + computerHand + "</html>");
         JLabel cpuHandIconLabel = new JLabel(computerHandIcon);
         cpuHandLabel = setFont(Color.BLACK, cpuHandLabel, 25);
         if (winOrLose.equals("得点をリセットしました。")) {
